@@ -1,13 +1,13 @@
 import { Account, Appwrite, Storage } from "@refinedev/appwrite";
 import nookies from "nookies";
 
-const APPWRITE_URL = "https://refine.appwrite.org/v1";
-const APPWRITE_PROJECT = "61c4368b4e349";
-export const APPWRITE_TOKEN_KEY = "appwrite-jwt";
+export const APPWRITE_TOKEN_KEY = process.env.NEXT_PUBLIC_APPWRITE_TOKEN_KEY as string;
 
 const appwriteClient = new Appwrite();
 
-appwriteClient.setEndpoint(APPWRITE_URL).setProject(APPWRITE_PROJECT);
+appwriteClient
+  .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_URL as string)
+  .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT as string);
 
 // for client side authentication
 const cookies = nookies.get();
